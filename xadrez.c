@@ -46,5 +46,21 @@ int main() {
     } while(i <= casas_rainha);
     printf("Rainha moveu %d casas para a esquerda!\n\n", casas_rainha);
     
+    //MOVIMENTO DA CAVALO
+    printf("*** MOVIMENTO DO CAVALO ***\n");
+    printf("Movendo 3 casas em 'L' (2 para a frente e 1 para a direita):\n");
+    int movimento_cavalo = 1;
+    while(movimento_cavalo --) 
+    {
+        for (i = 1; i <= 2; i++) {
+            printf(" %d: Frente\n", i);
+        }
+        printf(" 1: Direita\n");    
+    }
+
     return 0;
 }
+        
+
+
+
