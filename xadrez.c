@@ -4,6 +4,7 @@ int main() {
     
     // Declarando variaveis para o número de casas que cada peça irá mover
     int i; // Variável para controlar os loops
+    int j; // Variável auxiliar para o movimento do cavalo
     int casas_torre = 5;      // Quantidade de casas que a Torre irá mover
     int casas_rainha = 8;     // Quantidade de casas que a Rainha irá mover
     int casas_bispo = 5;      // Quantidade de casas que o Bispo irá mover
@@ -46,20 +47,59 @@ int main() {
     } while(i <= casas_rainha);
     printf("Rainha moveu %d casas para a esquerda!\n\n", casas_rainha);
     
-    //MOVIMENTO DA CAVALO
+  //MOVIMENTO DO CAVALO
     printf("*** MOVIMENTO DO CAVALO ***\n");
-    printf("Movendo 3 casas em 'L' (2 para a frente e 1 para a direita):\n");
-    int movimento_cavalo = 1;
-    while(movimento_cavalo --) 
-    {
-        for (i = 1; i <= 2; i++) {
-            printf(" %d: Frente\n", i);
-        }
-        printf(" 1: Direita\n");    
+    printf("Escolha o movimento do cavalo (1 ou 2):\n");
+    printf("Opção 1: Frente, Frente, Direita\n");
+    printf("Opção 2: Frente, Frente, Esquerda\n");
+    
+    int opcao_movimento;
+    scanf("%d", &opcao_movimento);
+    
+    switch (opcao_movimento) {
+        case 1:
+            printf("\nMovendo cavalo - Opção 1 (Frente, Frente, Direita):\n");
+            
+            // Usando WHILE para os movimentos para frente
+            j = 1;
+            while(j <= 2) {
+                printf(" %d: Frente \n", j);
+                j++;
+            }
+            
+            // Usando FOR para o movimento para direita
+            for(i = 1; i <= 1; i++) {
+                printf(" %d: Direita \n", i);
+            }
+            break;
+            
+        case 2:
+            printf("\nMovendo cavalo - Opção 2 (Frente, Frente, Esquerda):\n");
+            
+            // Usando WHILE para os movimentos para frente
+            j = 1;
+            while(j <= 2) {
+                printf(" %d: Frente \n", j);
+                j++;
+            }
+            
+            // Usando FOR para o movimento para esquerda
+            for(i = 1; i <= 1; i++) {
+                printf(" %d: Esquerda \n", i);
+            }
+            break;
+            
+        default:
+            printf("Opção inválida! Escolha 1 ou 2.\n");
+            break;
     }
-
+    
+    printf("\nCavalo completou o movimento em L!\n");
+   
     return 0;
 }
+    
+
         
 
 
