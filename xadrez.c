@@ -1,120 +1,66 @@
 #include <stdio.h>
 
-// Função recursiva para o movimento da TORRE
-void mover_torre_recursivo(int casas, int passo_atual) {
-    // Caso base: se já moveu todas as casas, para a recursão
-    if(passo_atual > casas) {
+// Função recursiva para TORRE com DECREMENTO (versão detalhada)
+void torre_com_decremento(int casas) {
+    // Caso base: quando não há mais casas para mover
+    if(casas == 0) {
+        printf("  (Fim da recursão - caso base atingido)\n");
         return;
     }
     
-    // Movimento atual
-    printf(" %d: Frente\n", passo_atual);
+    printf("  Chamada recursiva com casas = %d\n", casas);
     
-    // Chamada recursiva para o próximo passo
-    mover_torre_recursivo(casas, passo_atual + 1);
+    // Chamada recursiva DECREMENTANDO o contador
+    torre_com_decremento(casas - 1);
+    
+    // Ação executada APÓS o retorno da recursão
+    printf("  → Passo %d: Frente (voltando da recursão)\n", casas);
 }
 
-// Função recursiva para o movimento do BISPO
-void mover_bispo_recursivo(int casas, int passo_atual) {
-    // Caso base: se já moveu todas as casas, para a recursão
-    if(passo_atual > casas) {
-        return;
-    }
+// Função recursiva para BISPO com DECREMENTO
+void bispo_com_decremento(int casas) {
+    if(casas == 0) return;
     
-    // Movimento atual
-    printf(" %d: Cima, Direita\n", passo_atual);
+    bispo_com_decremento(casas - 1);  // DECREMENTO
     
-    // Chamada recursiva para o próximo passo
-    mover_bispo_recursivo(casas, passo_atual + 1);
+    printf(" %d: Cima, Direita\n", casas);  // Imprime na ordem crescente
 }
 
-// Função recursiva para o movimento da RAINHA
-void mover_rainha_recursivo(int casas, int passo_atual) {
-    // Caso base: se já moveu todas as casas, para a recursão
-    if(passo_atual > casas) {
-        return;
-    }
+// Função recursiva para RAINHA com DECREMENTO
+void rainha_com_decremento(int casas) {
+    if(casas == 0) return;
     
-    // Movimento atual
-    printf(" %d: Esquerda\n", passo_atual);
+    rainha_com_decremento(casas - 1);  // DECREMENTO
     
-    // Chamada recursiva para o próximo passo
-    mover_rainha_recursivo(casas, passo_atual + 1);
+    printf(" %d: Esquerda\n", casas);  // Imprime na ordem crescente
 }
 
-// Função do cavalo (permanece igual, com loops aninhados)
+// Função do cavalo
 void mover_cavalo_simples() {
     printf("\n=== MOVIMENTO SIMPLES ===\n");
     
-    // Movimento para CIMA com CONTINUE
     printf("\nCIMA:\n");
     for(int passo = 1; passo <= 3; passo++) {
-        
-        if(passo == 2) {
-            continue;  // Pula o passo 2 (demonstração)
-        }
-        
-        if(passo <= 3) {
-            printf("  Passo %d: CIMA\n", passo);
-        }
-        
-        if(passo == 3) {
-            break;  // Para após 2 passos (1 e 3)
-        }
+        if(passo == 2) continue;
+        if(passo <= 3) printf("  Passo %d: CIMA\n", passo);
+        if(passo == 3) break;
     }
     
-    // Movimento para DIREITA com BREAK
     printf("\nDIREITA:\n");
     for(int passo = 1; passo <= 3; passo++) {
-        
         printf("  Passo %d: DIREITA\n", passo);
-        
-        if(passo == 1) {
-            break;  // Para após 1 passo
-        }
+        if(passo == 1) break;
     }
     
     printf("\n Movimento concluído!\n");
 }
 
 int main() {
+    int casas_torre = 5;
+    int casas_bispo = 5;
+    int casas_rainha = 8;
     
-    // Declarando variaveis para o número de casas que cada peça irá mover
     
-    int casas_torre = 5;      // Quantidade de casas que a Torre irá mover
-    int casas_rainha = 8;     // Quantidade de casas que a Rainha irá mover
-    int casas_bispo = 5;      // Quantidade de casas que o Bispo irá mover
-                      
     
-    // MOVIMENTO DA TORRE (VERSÃO RECURSIVA)
-    printf("\n*** MOVIMENTO DA TORRE (RECURSIVO) ***\n");
-    printf("Movendo 5 casas para a FRENTE:\n");
-    
-    // Chamando a função recursiva
-    mover_torre_recursivo(casas_torre, 1);
-    printf("Torre moveu %d casas para a frente!\n\n", casas_torre);
-    
-   
-    // MOVIMENTO DO BISPO (VERSÃO RECURSIVA)
-    printf("*** MOVIMENTO DO BISPO (RECURSIVO) ***\n");
-    printf("Movendo 5 casas na diagonal (CIMA e DIREITA):\n");
-    
-    // Chamando a função recursiva
-    mover_bispo_recursivo(casas_bispo, 1);
-    printf("Bispo moveu %d casas na diagonal superior direita!\n\n", casas_bispo);
-    
-  
-    // MOVIMENTO DA RAINHA (VERSÃO RECURSIVA)
-    printf("*** MOVIMENTO DA RAINHA (RECURSIVO) ***\n");
-    printf("Movendo 8 casas para a ESQUERDA:\n");
-    
-    // Chamando a função recursiva
-    mover_rainha_recursivo(casas_rainha, 1);
-    printf("Rainha moveu %d casas para a esquerda!\n\n", casas_rainha);
-    
-    // MOVIMENTO DO CAVALO
-    printf("*** MOVIMENTO DO CAVALO ***\n");
-    mover_cavalo_simples();
-   
     return 0;
 }
